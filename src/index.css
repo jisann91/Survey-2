@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Syne:wght@700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Syne", sans-serif;
+  --color-primary: #00d68f;
+  --color-secondary: #ffd94a;
+  --color-dark-bg: #080c10;
+}
+
+@layer base {
+  body {
+    @apply bg-dark-bg text-white font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .glass {
+    @apply bg-dark-bg/80 backdrop-blur-md border-b border-white/5;
+  }
+
+  .glow-pulse {
+    box-shadow: 0 0 0 0 rgba(0, 214, 143, 0.4);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(0, 214, 143, 0.4);
+    }
+    70% {
+      box-shadow: 0 0 0 20px rgba(0, 214, 143, 0);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(0, 214, 143, 0);
+    }
+  }
+}
